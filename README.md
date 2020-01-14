@@ -26,7 +26,7 @@ This project was created and published by me as part of my learnings at Lighthou
 
 The following functions are currently implemented:
 
-    head: Return the first element of the input array.
+    `head`: Return the first element of the input array.
 
     tail: Returns a new array in which the elements is the whole original array removing the first element from it
 
