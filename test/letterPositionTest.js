@@ -1,4 +1,4 @@
-const letterPositions = require('../src/letterPositions');
+const letterPositions = require("../letterPositions");
 const assert = require('chai').assert;
 
 describe('letterPositions(sentence)', () => {

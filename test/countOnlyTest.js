@@ -1,20 +1,20 @@
-const assert = require('chai').assert;
-const countOnly = require('../src/countOnly');
+const assertEqual = require('../assertEqual');
+const countOnly = require("../countOnly");
 
-describe('countOnly(array, obj)', () => {
-  it('should return undefined if the input array is ["a"] and input object is {c: true}', () => {
-    assert.isUndefined(countOnly(['a'], {c: true}));
-  });
-  it('should return {a: 2, b: 1} if the input array is ["a", "a", "b"] and input object is {a: true, b: true}', () => {
-    assert.deepEqual(countOnly(['a', 'a', 'b'], {a: true, b: true}), {a: 2, b: 1});
-  });
-  it('should return {a: 2} if the input array is ["a", "a", "b"] and input object is {a: true, b: false', () => {
-    assert.deepEqual(countOnly(['a', 'a', 'b'], {a: true, b: false}), {a: 2});
-  });
-  it('should return undefined if array is empty', () => {
-    assert.isUndefined(countOnly([], {a: true}));
-  });
-  it('should return undefined if object is empty', () => {
-    assert.isUndefined(countOnly([1, 2, 3], {}));
-  });
-});
+const firstNames = [
+  "Karl",
+  "Salima",
+  "Agouhanna",
+  "Fang",
+  "Kavith",
+  "Jason",
+  "Salima",
+  "Fang",
+  "Joe"
+];
+
+const result1 = countOnly(firstNames, { "Jason": true, "Karima": true, "Fang": true });
+
+assertEqual(result1["Jason"], 1);
+assertEqual(result1["Karima"], undefined);
+assertEqual(result1["Fang"], 2);

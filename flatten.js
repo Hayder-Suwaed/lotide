@@ -1,46 +1,15 @@
-const eqArrays = function(arr1, arr2) {
-  if (arr1.length === arr2.length) {
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr1[i] !== arr2[i]) {
-        return false;
-      }
-    }
-    return true;
-  }
-};
-
-const assertArraysEqual = function(actual, expected) {
-  if (eqArrays(actual, expected)) {
-    console.log(`😁😁😁, Assertion Passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`👎👎👎, Assertion Failed: ${actual} !== ${expected}`);
-  }
-};
-
-//this function will take in an array of arrays
-//and return a "flattened" version of the array
-//use Array.isArray() method to check if each element within the array is an array or not
-const flatten = function(arrayOfArrays) {
-  let singleArray = [];
-
-  for (let x of arrayOfArrays) {
-    if (Array.isArray(x)) {
-      for (let y = 0; y < x.length; y++) {
-        singleArray.push(x[y]);
+const flatten = function(arr) {
+  let output = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      for (let j = 0; j < arr[i].length; j++) {
+        output.push(arr[i][j]);
       }
     } else {
-      singleArray.push(x);
+      output.push(arr[i]);
     }
   }
-  return singleArray;
+  return output;
 };
 
-assertArraysEqual(flatten([1, 2, [3, 4], 5, [6]]), [1, 2, 3, 4, 5, 6]);
-assertArraysEqual(
-  flatten(["Paris", "London", ["Athens", "Mykonos"], "Rome", ["Madrid"]]),
-  ["Paris", "London", "Athens", "Mykonos", "Rome", "Madrid"]
-);
-assertArraysEqual(
-  flatten([["Brownie"], "Barbie", ["Jordan", "Yoyo"], "Bruno"]),
-  ["Brownie", "Barbie", "Jordan", "Yoyo", "Bruno"]
-);
+module.exports = flatten;
